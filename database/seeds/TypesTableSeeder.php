@@ -11,6 +11,6 @@ class TypesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //test update
     }
 }
