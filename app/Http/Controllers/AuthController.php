@@ -28,7 +28,13 @@ class AuthController extends Controller
             // dd($response);
             // dd(User::where('email',$request->username)->first());
             // dd($response->getBody());
-            $user = User::where('email',$request->username)->first();
+            $user = User::where('users.email',$request->username)
+            // ->join('employees as e','users.id','=','e.user_id')
+            ->with('employee','roles.permissions')
+            ->first();
+            // dd($user);
+            // dd($user);
+
             // return (new UserResource($user))->test($response->getBody());
             // dd($response);
             $body = json_decode((string)$response->getBody());

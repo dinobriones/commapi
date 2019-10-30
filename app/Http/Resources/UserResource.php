@@ -21,11 +21,14 @@ class UserResource extends JsonResource
 
     public function toArray($request)
     {
+        // dd($request);
         // dd($this);
         return [
           'id' => $this->id,
           'name' => $this->name,
           'email' => $this->email,
+          'employee' => new EmployeeResource($this->employee),
+          'roles' => RoleResource::collection($this->roles),
           'auth_params' => $this->auth_params
         ];
     }
